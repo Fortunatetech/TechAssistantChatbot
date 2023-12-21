@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechAssist Chatbot</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>TechAssist - Your Intelligent Tech Companion</h1>
+        <p>
+          Welcome to TechAssist, your go-to platform for tech-related queries.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="user-input">
+        <form action="/ask" method="post">
+          <label for="user_input">Ask me anything about technology:</label>
+          <input type="text" id="user_input" name="user_input" />
+          <button type="submit">Ask the question</button>
+        </form>
+      </section>
+
+      <section id="response">
+        <h2>TechAssist's Response:</h2>
+        <p id="response-content">{{ answer }}</p>
+      </section>
+    </main>
+
+    <aside class="container">
+      <section id="about">
+        <h2>About TechAssist</h2>
+        <p>
+          TechAssist is powered by state-of-the-art natural language processing
+          models. Feel free to ask any tech-related questions, and we'll provide
+          you with the best answers.
+        </p>
+      </section>
+
+      <section id="contact-support">
+        <h2>Contact Support</h2>
+        <p>
+          For assistance or inquiries, reach out to our support team at
+          <a href="mailto:support@techassist.com">support@techassist.com</a>.
+        </p>
+      </section>
+
+      <section id="disclaimer">
+        <h2>Disclaimer</h2>
+        <p>
+          TechAssist is an AI-powered chatbot designed to assist with general
+          tech queries. For specific or critical issues, consult with a
+          professional in the respective field.
+        </p>
+      </section>
+    </aside>
+
+    <script>
+      function askQuestion() {
+        // Add logic to handle user interaction and display responses
+        // This section can be implemented using JavaScript based on your needs
+        document.getElementById("response-content").innerText =
+          "TechAssist's answer goes here...";
+      }
+    </script>
+  </body>
+</html>
