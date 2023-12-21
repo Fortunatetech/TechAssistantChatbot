@@ -7,10 +7,8 @@ import streamlit as st
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from langchain.chat_models import ChatOpenAI
 
-from secret_key import openapi_key
-
-# Set OpenAI API key
-os.environ['OPENAI_API_KEY'] = openapi_key
+load_dotenv()  # take environment variables from .env.
+openai_KEY=os.getenv("OPENAI_API_KEY")
 
 
 app = Flask(__name__)

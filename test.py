@@ -6,10 +6,14 @@ import streamlit as st
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from langchain.chat_models import ChatOpenAI
 
-from secret_key import openapi_key
+import os
+from dotenv import load_dotenv
+from langchain import HuggingFaceHub
 
-# Set OpenAI API key
-os.environ['OPENAI_API_KEY'] = openapi_key
+load_dotenv()  # take environment variables from .env.
+KEY = os.getenv("hugging_face_key")
+openai_KEY=os.getenv("OPENAI_API_KEY")
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = KEY
 
 # Streamlit UI Configuration
 st.set_page_config(
