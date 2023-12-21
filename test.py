@@ -10,6 +10,16 @@ import os
 from dotenv import load_dotenv
 from langchain import HuggingFaceHub
 
+import os
+from dotenv import load_dotenv
+from langchain.chat_models import ChatOpenAI
+
+load_dotenv()  # take environment variables from .env.
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
+
+chat = ChatOpenAI(temperature=0.6, openai_api_key=OPENAI_KEY)
+
+
 load_dotenv()  # take environment variables from .env.
 KEY = os.getenv("hugging_face_key")
 openai_KEY=os.getenv("OPENAI_API_KEY")
