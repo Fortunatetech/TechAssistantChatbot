@@ -2,29 +2,20 @@
 import os
 from dotenv import load_dotenv
 import streamlit as st
-
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from langchain.chat_models import ChatOpenAI
 
-import os
-from dotenv import load_dotenv
-from langchain import HuggingFaceHub
+# Load environment variables
+load_dotenv()
 
-import os
-from dotenv import load_dotenv
-from langchain.chat_models import ChatOpenAI
-
-load_dotenv()  # take environment variables from .env.
+# Set OpenAI API key
 OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
-chat = ChatOpenAI(temperature=0.6, openai_api_key=OPENAI_KEY)
+# Set Hugging Face API token
+HUGGINGFACE_KEY = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-
-load_dotenv()  # take environment variables from .env.
-KEY = os.getenv("hugging_face_key")
-openai_KEY=os.getenv("OPENAI_API_KEY")
-
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = str(KEY) 
+# Initialize Chat Models
+chat_openai = ChatOpenAI(temperature=0.6, openai_api_key=OPENAI_KEY)
 
 # Streamlit UI Configuration
 st.set_page_config(
@@ -40,21 +31,13 @@ st.markdown(
     "Ask us anything about technology, and we'll provide insightful answers!"
 )
 
-# Initialize Chat Model
-chat = ChatOpenAI(temperature=0.6)
-
-# Session State Initialization
-st.session_state['flowmessages'] = st.session_state.get('flowmessages', [
-    SystemMessage(content="Welcome! I'm TechAssist, your Tech AI assistant.")
-])
-
 # User Input Section
 user_input = st.text_input("Ask me anything about technology:", key="input")
 
 # Handle User Interaction
 if st.button("Ask the question"):
     st.session_state['flowmessages'].append(HumanMessage(content=user_input))
-    answer = chat(st.session_state['flowmessages'])
+    answer = chat_openai(st.session_state['flowmessages'])
     st.session_state['flowmessages'].append(AIMessage(content=answer.content))
 
     # Display Response
@@ -74,7 +57,7 @@ st.sidebar.markdown(
 # Provide Contact or Support Information
 st.sidebar.header("Contact Support")
 st.sidebar.markdown(
-    "For assistance or inquiries, reach out to our support teaNm at support@techassist.com."
+    "For assistance or inquiries, reach out to our support team at support@techassist.com."
 )
 
 # Disclaimer
