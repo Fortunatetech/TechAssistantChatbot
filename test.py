@@ -13,7 +13,8 @@ from langchain import HuggingFaceHub
 load_dotenv()  # take environment variables from .env.
 KEY = os.getenv("hugging_face_key")
 openai_KEY=os.getenv("OPENAI_API_KEY")
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = KEY
+
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = str(KEY) 
 
 # Streamlit UI Configuration
 st.set_page_config(
